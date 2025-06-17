@@ -104,7 +104,7 @@
             margin: 0 auto;
         }
 
-        /*  Navbar */
+        /* Header & Navbar */
         header {
             position: fixed;
             top: 0;
@@ -121,24 +121,14 @@
             justify-content: space-between;
             align-items: center;
         }
-.img {
-            border-radius: 50%;
-            margin-right: 10px;
-        } 
+
         .logo {
             font-size: 1.8rem;
-            font-weight: bold;
-            display: flex;
-  align-items: center; /* Vertikal sejajar */
-  gap: 10px; /* Jarak antara gambar dan teks */
+            font-weight: 700;
             color: var(--primary);
             text-decoration: none;
         }
-        .logo span {
-            color: var(--secondary);
-            font-style: italic;
-            font-weight: 600;
-        }
+
         .nav-menu {
             display: flex;
             list-style: none;
@@ -186,142 +176,231 @@
             color: var(--dark);
         }
 
-        .hamburger i {
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            height: 100vh;
+            background-color: var(--light);
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+            transition: var(--transition);
+            padding: 80px 20px 20px;
+            overflow-y: auto;
+        }
+
+        .sidebar.active {
+            right: 0;
+        }
+
+        .sidebar-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar-menu a {
+            display: block;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            padding: 10px 0;
+            position: relative;
             transition: var(--transition);
         }
-         /* Sidebar */
-    .sidebar {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 250px;
-      height: 100%;
-      background-color:rgba(245, 240, 230, 0.95);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 60px;
-      transition: right 0.3s ease;
-      z-index: 9999;
-    }
 
-    .sidebar.active {
-      right: 0;
-    }
+        /* Efek garis pada sidebar */
+        .sidebar-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
 
-    .sidebar img {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      margin-bottom: 20px;
-    }
+        .sidebar-menu a:hover::after,
+        .sidebar-menu a.active::after {
+            width: 50px;
+        }
 
-    .sidebar ul {
-      list-style: none;
-      padding: 0;
-      width: 100%;
-      text-align: center;
-    }
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            color: var(--accent);
+        }
 
-    .sidebar ul li {
-      padding: 15px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            background: linear-gradient(rgba(74, 44, 42, 0.7), rgba(74, 44, 42, 0.7)), 
+                        
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding-top: 80px;
+        }
 
-    .sidebar ul li a {
-      color: #4A2C2A;
-      text-decoration: none;
-      font-size: 18px;
-      display: block;
-      font-weight: bold;
-      transition: 0.3s;
-      position: relative;
-    }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-    .sidebar ul li a::after {
-      content: '';
-      position: absolute;
-      width: 0%;
-      height: 1px;
-      background-color: #aa702a;
-      bottom: 2px;
-      left: 0;
-      transition: width 0.3s ease;
-    }
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
 
-    .sidebar ul li a:hover::after {
-      width: 100%;
-    }
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
 
-    .close-btn {
-      position: absolute;
-      top: 20px;
-      right: 25px;
-      font-size: 24px;
-      color: #4A2C2A;
-      cursor: pointer;
-    }
+        
 
+      
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+        }
 
-    
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+        }
     </style>
 </head>
 <body>
-<!-- Header & Navbar -->
-<header>
-  <div class="container header-container">
-    <a href="#hero" class="logo">
-      <img src="kopiko.jpg" alt="Logo" style="width: 50px; height: 50px; border-radius: 50%;">
-      Kopi<span>Kenangan</span>
-    </a>
-
-    <ul class="nav-menu">
-      <li><a href="#hero" class="active">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#menu">Menu</a></li>
-      <li><a href="#lokasi">Lokasi</a></li>
-      <li><a href="#contact">Kontak</a></li>
-    </ul>
-
-    <div class="hamburger" id="hamburger">
-      <i class="fas fa-bars"></i>
+    <!-- Header & Navbar -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Kopi Kenangan</a>
+            
+            <ul class="nav-menu">
+                <li><a href="#hero" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#lokasi">Lokasi</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+            
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Sidebar Menu -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-close" id="sidebarClose">
+            <i class="fas fa-times"></i>
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li><a href="#hero" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#lokasi">Lokasi</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
     </div>
-  </div>
-</header>
+    
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Rasakan Kenikmatan Kopi Spesial</h1>
+                <p>Setiap tegukan adalah perjalanan rasa yang memikat, mulai dari biji kopi terpilih hingga di tangan barista ahli kami.</p>
+                <a href="#menu" class="btn">Lihat Menu <i class="fas fa-arrow-right ms-2"></i></a>
+            </div>
+        </div>
+    </section>
+    
 
-    
-<!-- Sidebar Mobile -->
-<div class="sidebar" id="sidebar">
-  <span class="close-btn" onclick="closeSidebar()">✖</span>
-  <img src="kopiko.jpg" alt="Sidebar Logo" />
-  <ul>
-    <li><a href="#home" onclick="closeSidebar()">Home</a></li>
-    <li><a href="#about" onclick="closeSidebar()">About</a></li>
-    <li><a href="#menu" onclick="closeSidebar()">Menu</a></li>
-    <li><a href="#lokasi" onclick="closeSidebar()">Lokasi</a></li>
-    <li><a href="#contact" onclick="closeSidebar()">Kontak</a></li>
-  </ul>
-</div>
-    
-   
-    
-   
-    
     
     <script>
-      const hamburger = document.getElementById('hamburger');
-      const sidebar = document.getElementById('sidebar');
-    
-      hamburger.addEventListener('click', () => {
-        sidebar.classList.toggle('active');
-      });
-    
-      function closeSidebar() {
-        sidebar.classList.remove('active');
-      }
-    
-
-      
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Sidebar toggle - Perbaikan hamburger menu
+        const hamburger = document.getElementById('hamburger');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarClose = document.getElementById('sidebarClose');
+        
+        hamburger.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : 'auto';
+        });
+        
+        sidebarClose.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close sidebar when clicking outside
+        document.addEventListener('click', (e) => {
+            if (sidebar.classList.contains('active') && 
+                !sidebar.contains(e.target) && 
+                e.target !== hamburger) {
+                sidebar.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Close sidebar when clicking on links
+        document.querySelectorAll('.sidebar-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
         
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -375,4 +454,4 @@
         });
     </script>
 </body>
-</html>  
+</html>
